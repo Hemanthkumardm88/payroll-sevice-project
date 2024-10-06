@@ -2,22 +2,20 @@ Payroll Processing System - PPC
 This project provides APIs to onboard employees, manage their salaries, track exits, and generate various financial reports for a payroll processing system.
 
 Prerequisites
-Java 17 or later
-Maven 3.x
-H2 Database (embedded)
-Spring Boot
+	Java 17 or later
+	Maven 3.x
+	H2 Database (embedded)
+	Spring Boot
 How to Run the Application
-
-
-mvn clean install  on project directory
-Run the application:
-		1. By running main class in IDE 
-		2. java -jar application.jar 
-		
-		java -jar target/payroll-processing-system-0.0.1-SNAPSHOT.jar
-
-
-You can run the Spring Boot application using Maven or directly from your IDE.
+	mvn clean install  on project directory
+	Run the application:
+			1. By running main class in IDE 
+			2. java -jar application.jar 
+			
+			java -jar target/payroll-processing-system-0.0.1-SNAPSHOT.jar
+	
+	
+	You can run the Spring Boot application using Maven or directly from your IDE.
 
 API Endpoints
 Below is a list of available API endpoints:
@@ -34,12 +32,20 @@ Below is a list of available API endpoints:
 	Content-Type: multipart/form-data
 	Parameter: file (Text file with employee details)
 
+	Input File Format
+	The text file should be structured as follows:
+	1, emp101, Bill, Gates, Software Engineer, ONBOARD, 1-11-2022, 10-10-2022, “Bill Gates is going to join DataOrb on 1st November as a SE.”
+	2, emp102, Steve, Jobs, Architect, ONBOARD, 1-10-2022, 10-10-2022, “Steve Jobs joined DataOrb on 1st October as an Architect.”
+	3, emp103, Martin, Fowler, Software Engineer, ONBOARD, 15-10-2022, 10-10-2022, “Martin has joined DataOrb as a SE.”
+	4, emp102, SALARY, 3000, 10-10-2022, “Oct Salary of Steve.”
+
 	curl -X POST http://localhost:8080/api/employees/upload -F 'file=@Employee_details.txt'
 
 
-	Response: Success or failure message after processing the file.
+	Response:
+	Success or failure message after processing the file.
 
-2. Get Total Number of Employees
+3. Get Total Number of Employees
 	Endpoint: /api/employees/total
 
 	Method: GET
@@ -52,7 +58,7 @@ Below is a list of available API endpoints:
 	}
 
 
-3. Get Monthly Join/Exit Report
+4. Get Monthly Join/Exit Report
 	Endpoint: /api/reports/monthly-employees
 
 	Method: GET
@@ -80,7 +86,7 @@ Below is a list of available API endpoints:
 	}
 
 
-4. Get Monthly Salary Report
+5. Get Monthly Salary Report
 	Endpoint: /api/reports/salary/monthly
 
 	Method: GET
@@ -97,7 +103,7 @@ Below is a list of available API endpoints:
 	}
 
 
-5. Get Employee Financial Report
+6. Get Employee Financial Report
 	Endpoint: /api/reports/financial/employee/{empId}
 
 	Method: GET
@@ -114,7 +120,7 @@ Below is a list of available API endpoints:
 	}
 
 
-6. Get Monthly Amount Released (Salary + Bonus + Reimbursement)
+7. Get Monthly Amount Released (Salary + Bonus + Reimbursement)
 	Endpoint: /api/reports/financial/monthly
 
 	Method: GET
@@ -130,7 +136,7 @@ Below is a list of available API endpoints:
 	}
 
 
-7. Get Yearly Financial Report
+8. Get Yearly Financial Report
 	Endpoint: /api/reports/financial/yearly
 
 	Method: GET
@@ -151,15 +157,6 @@ Below is a list of available API endpoints:
 	  "eventDate": "2022-10-10",
 	  "eventValue": 3000
 	}
-
-
-Input File Format
-The text file should be structured as follows:
-1, emp101, Bill, Gates, Software Engineer, ONBOARD, 1-11-2022, 10-10-2022, “Bill Gates is going to join DataOrb on 1st November as a SE.”
-2, emp102, Steve, Jobs, Architect, ONBOARD, 1-10-2022, 10-10-2022, “Steve Jobs joined DataOrb on 1st October as an Architect.”
-3, emp103, Martin, Fowler, Software Engineer, ONBOARD, 15-10-2022, 10-10-2022, “Martin has joined DataOrb as a SE.”
-4, emp102, SALARY, 3000, 10-10-2022, “Oct Salary of Steve.”
-
 
 The following types of events can be present in the input file:
 
