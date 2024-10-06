@@ -6,7 +6,7 @@ Prerequisites
 	Maven 3.x
 	H2 Database (embedded)
 	Spring Boot
-
+<br/>
 How to Run the Application
 	mvn clean install  on project directory
 	Run the application:
@@ -18,10 +18,10 @@ How to Run the Application
 	
 	You can run the Spring Boot application using Maven or directly from your IDE.
 
-
+<br/>
 API Endpoints
 Below is a list of available API endpoints:
-
+<br/>
 1. Upload Employee Details File
 	Endpoint: /api/employees/upload
 
